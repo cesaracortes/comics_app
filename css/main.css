@@ -1,0 +1,63 @@
+header {
+    background: #563c55 url(../imgs/header02.jpg) no-repeat center top;
+    -webkit-background-size: cover;
+	height: 7em;
+}
+
+
+html{
+	background: black;
+	padding: 0;
+  border: 0;
+  margin: 0;
+  font: inherit;
+  font-size: 100%;
+}
+
+#comic_search{
+	vertical-align: right;
+}
+
+
+h1{
+	text-align: center;
+	font-size: 50px;
+}
+
+li {
+	display: inline-block;
+	padding-bottom: 25px;
+	margin: 1px;
+}
+
+li figure{
+	margin: 0;
+}
+
+li figure img{
+	border: 1px solid black;
+    width: 200px;
+    height: 300px;
+}
+
+li figure:hover {
+	-webkit-transform: scale3d(1.4, 1.4, 2);
+    transform: scale3d(1.4, 1.4, 2);
+  }
+
+#filtros {
+	line-height:30px;
+    padding:5px;	      
+	border: 1px solid black;
+	float: left;
+	height: 300px;
+	width: 150px;
+}
+
+#comics {
+	border: 1px solid;
+	padding-left: 20px;
+	padding-top: 30px;
+
+}
+
