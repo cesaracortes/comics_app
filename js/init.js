@@ -5,11 +5,13 @@ function log_in(){
 	if (wasRegistered(user)){
 		alert("bienvenido " + user_name.value);
 		window.location = "main.html";
+	}else{
+		alert("invalid user or password ");
 	}
 }
 
 function userFromInput(){
-	var user = {user_name: user_name.value , password: pass.password};
+	var user = {user_name: user_name.value , password: pass.value};
 	return user;
 }
 
@@ -18,17 +20,17 @@ function hasSamePass(){
 	return users != undefined  && hasUser(users);
 }
 
-function existeUsuario(users){
-	return users != undefined  && hasUser(users);
+function retrieveUserFrom(users){
+	return users.find(hasSameUserName);
 }
 
+
 function hasUser(users){
-	var users = usersFromJSON();
 	return users.some(hasSameUserName);
 }
 
 function hasSameUserName(user){
-	return userFromInput.user_name = user.user_name;
+	return userFromInput().user_name == user.user_name && userFromInput().password == user.password;
 }
 
 function usersFromJSON(){
@@ -38,7 +40,7 @@ function usersFromJSON(){
 
 function wasRegistered(user){
 	var users =  usersFromJSON();
-	return existeUsuario(users) && user.password == user_name.password;
+	return  retrieveUserFrom(users);
 }
 
 function sign_in(){
@@ -64,7 +66,9 @@ function validateUser(){
 }
 
 function userNotExists(){
-	return !existeUsuario();
+	return usersFromJSON.some(function(aValue){
+		return aValue.user_name == new_user.value;
+	});
 	}
 
 function isPassValid(){
