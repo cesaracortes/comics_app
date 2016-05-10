@@ -1,5 +1,3 @@
-
-
 function log_in(){
 	user = userFromInput();
 	if (wasRegistered(user)){
@@ -11,7 +9,7 @@ function log_in(){
 }
 
 function userFromInput(){
-	var user = {user_name: user_name.value , password: pass.value};
+	var user =  new User(user_name.value , pass.value);
 	return user;
 }
 
@@ -79,7 +77,7 @@ function isPassValid(){
 
 function init(){
 	if(localStorage["users"] == undefined){
-		var admin = [{user_name:"admin", password: "admin2016"}]; 
+		var admin = [new User("admin","admin2016")]; 
 		localStorage["users"] = JSON.stringify(admin);	
 	}
 }
