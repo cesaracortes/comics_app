@@ -4,6 +4,7 @@ function log_in(){
 	user = userFromInput();
 	if (wasRegistered(user)){
 		alert("bienvenido " + user_name.value);
+		localStorage["logedUser"] = JSON.stringify(user_name.value);
 		window.location = "main.html";
 	}else{
 		alert("invalid user or password ");

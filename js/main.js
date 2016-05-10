@@ -18,6 +18,7 @@
 
 
 	function init(){
+		validatelogedUsr();
 		var comics = document.getElementById("comics");
 		var list = document.createElement("ul");
 		comics.appendChild(list);
@@ -100,4 +101,17 @@
 		filteredComics = Comic.all();
 		drawComics();
 
+	}
+
+	function log_out(){
+		localStorage.removeItem("logedUser");
+		window.location = "init.html";
+	}
+
+	function validatelogedUsr(){
+		if(localStorage["logedUser"] == undefined){
+			window.location = "init.html";
+		}else{
+			loged_usr.text = "Welcome " +  JSON.parse(localStorage["logedUser"]);
+		}
 	}
