@@ -3,7 +3,6 @@
 function log_in(){
 	user = userFromInput();
 	if (wasRegistered(user)){
-		alert("bienvenido " + user_name.value);
 		localStorage["logedUser"] = JSON.stringify(user_name.value);
 		window.location = "main.html";
 	}else{
@@ -52,6 +51,7 @@ function sign_in(){
 function register(){
 	if(validateUser()){
 		do_register();
+		window.location = "main.html";
 	}
 }
 
@@ -60,15 +60,16 @@ function do_register(){
 	var registerd_users = usersFromJSON();
 	registerd_users.push(user);
 	localStorage["users"] = JSON.stringify(registerd_users);
+	localStorage["logedUser"] = JSON.stringify(new_name.value);
 }
 
 function validateUser(){
-	return userNotExists() && isPassValid();
+	return !userExists() && isPassValid();
 }
 
-function userNotExists(){
-	return usersFromJSON.some(function(aValue){
-		return aValue.user_name == new_user.value;
+function userExists(){
+	return usersFromJSON().some(function(aValue){
+		return aValue.user_name == new_name.value;
 	});
 	}
 

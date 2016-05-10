@@ -1,9 +1,6 @@
-	var filteredComics = [];
-
 	function addItem(aComic){
 		var item = document.createElement("li");
 		var fig = document.createElement("figure");
-		//var img = document.createElement("img");
 		fig.innerHTML = "<img src=\"" + aComic.location + "\">"
 		item.appendChild(fig);
 
@@ -56,12 +53,12 @@
 	}
 
 	function findByGenre(){
-		var items = filterComics(filterByGenre).map(addItem);
-		drawComics();
+		var filteredComics = filterComics(filterByGenre);
+		drawComics(filteredComics);
 	}
 
-	function drawComics(){
-		items = filteredComics.map(addItem);
+	function drawComics(someComics){
+		items = someComics.map(addItem);
 		addComics(items);
 	}
 
@@ -81,8 +78,8 @@
 
 	function filterByGenre(aComic){
 		var genre_selection = document.getElementById("genre_selection");
-		var selectedValue = genre_selection.options[genre_selection.selectedIndex].value;
-		return aComic.genre == selectedValue;
+		var genre = genre_selection.options[genre_selection.selectedIndex].value;
+		return aComic.isGenre(genre);
 	}
 
 	function filterByCharacter(aComic){
@@ -92,14 +89,13 @@
 	}
 
 	function findByCharacter(){
-		var search = document.getElementById("character_selection").value;
-		filteredComics = filterComics(filterByCharacter);
-		drawComics();
+		var filteredComics = filterComics(filterByCharacter);
+		drawComics(filteredComics);
 	}
 
 	function clearSearch(){
-		filteredComics = Comic.all();
-		drawComics();
+		var filteredComics = Comic.all();
+		drawComics(filteredComics);
 
 	}
 

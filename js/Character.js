@@ -11,8 +11,15 @@ Character.all = function (){
 		Character.characters.push(new Character("Thor"));
 		Character.characters.push(new Character("Spiderman"));
 		Character.characters.push(new Character("Batman"));
+		Character.characters.push(new Character("SpaceMan"));
+		Character.characters.push(new Character("Eternauta"));
+		Character.characters.push(new Character("Dragon Ball"));
+		Character.characters.push(new Character("The Walking Dead"));
+		
 	}
 	return Character.characters;
 }
+
+
 
 
