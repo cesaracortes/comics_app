@@ -4,14 +4,30 @@
 <body  onload="init()">
 	<header>
 	</header>
+	<div id="search_panel">
+		<select id="genre_selection" onchange="findByGenre()">
+			 <option value="" disabled selected>Find by Gender</option>
+		</select>
+		<select id="character_selection" onchange="findByCharacter()">
+			 <option value="" disabled selected>Find by Character</option>
+		</select>
+		<input type="submit" value="clear" onclick="clearSearch()"></input>	
+
+			 <!-- <input type="text" onkeyup="findByCharacter()" id="char_search">Search a Character</input> -->
+  		
+  	</div>
+</div>
+	</div>
 		<section id="comics">
 			
 		</section>
 
 
-
 </body>
 
+<script src="js/character.js"></script>
+<script src="js/comic.js"></script>
+<script src="js/Genre.js"></script>
 <script src="js/main.js"></script>
 
 

@@ -1,7 +1,8 @@
 header {
-    background: #563c55 url(../imgs/header02.jpg) no-repeat center top;
+	background: #563c55 url(../imgs/header02.jpg) no-repeat center top;
     -webkit-background-size: cover;
 	height: 7em;
+	color: red;
 }
 
 
@@ -57,7 +58,23 @@ li figure:hover {
 #comics {
 	border: 1px solid;
 	padding-left: 20px;
-	padding-top: 30px;
+	padding-top: 0px;
+	margin-top: 0px;
 
 }
 
+#search_panel{
+	border: 1px solid red;
+    padding: 20px;
+    margin-bottom: 0;
+    margin-left: 60px;
+    margin-right: 50px;
+}
+
+
+#search_panel input{
+	background: black;
+	border: 1px solid grey;
+	padding: 8px;
+	color: white;
+}
