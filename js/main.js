@@ -108,6 +108,37 @@
 		if(localStorage["logedUser"] == undefined){
 			window.location = "init.html";
 		}else{
-			loged_usr.text = "Welcome " +  JSON.parse(localStorage["logedUser"]);
+			loged_usr.text = "Welcome " + logedUser().name ;
 		}
 	}
+
+	function logedUser(){
+		return JSON.parse(localStorage["logedUser"])
+	}
+
+	function showProfile(){
+		var modal = document.getElementById('myModal');
+		var span = document.getElementsByClassName("close")[0];
+		modal.style.display = "block";
+		var name = document.getElementById('info_name');
+		var user_name = document.getElementById('info_user_name');
+		var mail = document.getElementById('info_email');
+		var perfil = document.getElementById('info_perfil');
+		var user = logedUser();
+		name.innerHTML = user.name + " "  + user.last_name ;
+		user_name.innerHTML = user.user_name;
+		mail.innerHTML = user.email;
+		perfil.innerHTML =user.perfil;
+
+		span.onclick = function() {
+    		modal.style.display = "none";
+    	}
+
+    	window.onclick = function(event) {
+   		 	if (event.target == modal) {
+      	 		 modal.style.display = "none";
+   			 }
+   		}
+
+	}
+	

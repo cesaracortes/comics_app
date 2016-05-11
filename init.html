@@ -15,9 +15,18 @@
 </header>
 
 <section id="sign_in">
-		<input type="text" name="user_name" value="" placeholder="User name" id="new_name" >  </input>
-		<input type="password" name="password" value="" placeholder="Password" id="new_pass"  </input>
+		<div class="user_data">
+			<input type="text" placeholder="Name" id="new_name" >  </input>
+			<input type="text" placeholder="Last Name " id="new_last_name" >  </input>
+		</div>
+		<div class="user_unique_data">
+			<input type="text" placeholder="E-mail " id="new_e_mail" >  </input>
+			<input type="text" name="user_name" placeholder="User name" id="new_user_name" >  </input>
+			<input type="password" name="password" placeholder="Password" id="new_pass"  </input>
+		
+		</div>
 		<input type="submit" value="Register" onclick="register()"></input>	
+		<input type="submit" value="Cancel" onclick="cancel()"></input>	
 </section>
 
 </div>

@@ -1,9 +1,9 @@
 
 
 function log_in(){
-	user = userFromInput();
-	if (wasRegistered(user)){
-		localStorage["logedUser"] = JSON.stringify(user_name.value);
+	user = retrieveUser(userFromInput());
+	if (user != undefined){
+		localStorage["logedUser"] = JSON.stringify(user);
 		window.location = "main.html";
 	}else{
 		alert("invalid user or password ");
@@ -38,7 +38,7 @@ function usersFromJSON(){
  	return JSON.parse(users);
 }
 
-function wasRegistered(user){
+function retrieveUser(user){
 	var users =  usersFromJSON();
 	return  retrieveUserFrom(users);
 }
@@ -49,27 +49,40 @@ function sign_in(){
 }
 
 function register(){
-	if(validateUser()){
+	if(validInput() && validateUser()){
 		do_register();
 		window.location = "main.html";
+	}else{
+		alert();
 	}
 }
 
 function do_register(){
-	var user = {user_name:new_name.value, password: new_pass.value}; 
+	var user = {user_name:new_user_name.value, password: new_pass.value , name: new_name.value ,email: new_e_mail.value, last_name: new_last_name.value}; 
 	var registerd_users = usersFromJSON();
 	registerd_users.push(user);
 	localStorage["users"] = JSON.stringify(registerd_users);
-	localStorage["logedUser"] = JSON.stringify(new_name.value);
+	localStorage["logedUser"] = JSON.stringify(user);
 }
 
 function validateUser(){
 	return !userExists() && isPassValid();
 }
 
+function validInput(){
+	var requiredInputs = [new_name,new_last_name,new_user_name,new_pass,new_e_mail];
+	var invalidInputs = requiredInputs.filter(function (anInput){
+			return anInput.value == "";
+			});
+	for (var i = 0; i < invalidInputs.length; i++) {
+		invalidInputs[i].style.border = "2px solid red";
+	}
+	return invalidInputs.length >= 0; 
+}
+
 function userExists(){
 	return usersFromJSON().some(function(aValue){
-		return aValue.user_name == new_name.value;
+		return aValue.user_name == new_user_name.value;
 	});
 	}
 
@@ -84,5 +97,10 @@ function init(){
 		var admin = [{user_name:"admin", password: "admin2016"}]; 
 		localStorage["users"] = JSON.stringify(admin);	
 	}
+}
+
+function cancel(){
+	document.getElementById("log_in").style.display = "inline-block";
+	document.getElementById("sign_in").style.display = "none";
 }
 

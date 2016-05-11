@@ -17,7 +17,7 @@
   		
   	</div>
   	<div id="userinfo">
-  			<a href="#" id="loged_usr"></a>
+  			<a href="#" id="loged_usr" onclick="showProfile()"></a>
 			<input type="submit" value="log out" onclick="log_out()"></input>	
   		</div>
 </div>
@@ -25,6 +25,33 @@
 		<section id="comics">
 			
 		</section>
+
+		<div id="myModal" class="modal">
+	 		 <div class="modal-content">
+    			<span class="close"></span>
+    			<div id="usr_info">
+    				<div id="info_header">
+    					<label id="info_name" for="name"></label>
+    				</div>
+    				<div id="content">
+    				<div  class="user_data">
+    					<label ><strong>User name</strong></label>
+    					<label id="info_user_name"  for="user_name">asdas</label>
+    				</div>
+    				<div  class="user_data">
+    					<label ><strong>Email</strong></label>
+    					<label id="info_email" for="email"></label>
+    				</div>
+    				<div  class="user_data">
+    					<label ><strong>Perfil</strong></label>
+    					<label id="info_perfil" for="perfil"></label>
+    				</div>
+    				</div>
+
+    				
+    			</div>
+  			</div>
+      </div>
 
 
 </body>
