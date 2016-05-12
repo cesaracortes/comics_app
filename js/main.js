@@ -141,4 +141,10 @@
    		}
 
 	}
+
+	function doAdvancedSearch(){
+		var valueToSearch = document.getElementById("advancedSearch").value;
+		var someComics = Comic.findByAnyMatch(valueToSearch);
+		drawComics(someComics);
+	}
 	

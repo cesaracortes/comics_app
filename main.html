@@ -11,7 +11,10 @@
 		<select id="character_selection" onchange="findByCharacter()">
 			 <option value="" disabled selected>Find by Character</option>
 		</select>
+		<input id="advancedSearch" type="text" name="search" placeholder="Advanced Search.." onkeyup="doAdvancedSearch()">
 		<input type="submit" value="clear" onclick="clearSearch()"></input>	
+
+
 
 			 <!-- <input type="text" onkeyup="findByCharacter()" id="char_search">Search a Character</input> -->
   		
@@ -56,6 +59,7 @@
 
 </body>
 
+<script src="js/filter.js"></script>
 <script src="js/character.js"></script>
 <script src="js/comic.js"></script>
 <script src="js/Genre.js"></script>

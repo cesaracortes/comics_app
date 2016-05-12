@@ -44,6 +44,30 @@ Comic.all = function(){
 }
 
 
+Comic.findByAnyMatch = function(aValue){
+			aFilter = Filter.or(aGenreFilter(aValue),aCharacterFilter(aValue));
+			return Comic.all().filter(aFilter);
+}
+
+function aGenreFilter(aValue){
+	var value = aValue;
+	return function(aComic){
+		return aComic.genre.toLowerCase().includes(aValue.toLowerCase());	
+	}
+	
+}
+
+function aCharacterFilter(aValue){
+	var value = aValue;
+	return function(aComic){
+		 return aComic.characters.some( function(aCharacter){
+											return aCharacter.toLowerCase().includes(aValue.toLowerCase());
+										});	
+	}
+	
+}
+
+
 
 	
 

@@ -184,3 +184,14 @@ input, select{
 	font-size: 30px;
 	font-family: Century Gothic, sans-serif;
 }
+
+#search_panel input[type=text] {
+    width: 150px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: white;
+    background-position: 10px 10px; 
+    background-repeat: no-repeat;
+}
+
