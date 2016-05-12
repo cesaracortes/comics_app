@@ -2,6 +2,9 @@ function Comic( genre , imageLocation , characters ){
 	this.genre = genre;
 	this.location = imageLocation;
 	this.characters = characters;
+	this.writer = "Stan Lee";
+	this.status = "Borrowed";
+	this.publishedAt = "27/03/2005";
 
 	this.hasCharacter = function (aCharacter){
 		return this.characters.some(function (anotherCharacter){

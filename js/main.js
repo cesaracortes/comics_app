@@ -1,8 +1,26 @@
 	function addItem(aComic){
 		var item = document.createElement("li");
 		var fig = document.createElement("figure");
-		fig.innerHTML = "<img src=\"" + aComic.location + "\">"
+		fig.innerHTML = "<img onclick=\"showImageDetalis()\" src=\"" + aComic.location + "\">" ;
+		var details = document.createElement("div");
+		details.className = "details";
+		
+		var autorLabel = document.createElement("label");
+		autorLabel.innerHTML = "Autor: " + aComic.writer;
+		details.appendChild(autorLabel);
+
+		
+		var statusLabel = document.createElement("label");
+		statusLabel.innerHTML = "Status: " + aComic.status;
+		details.appendChild(statusLabel);
+
+		var publishedLabel = document.createElement("label");
+		publishedLabel.innerHTML = "Published: " + aComic.publishedAt;
+		details.appendChild(publishedLabel);
+
+
 		item.appendChild(fig);
+		item.appendChild(details);
 
 		return item;
 		}
@@ -117,7 +135,7 @@
 	}
 
 	function showProfile(){
-		var modal = document.getElementById('myModal');
+		var modal = document.getElementById('userProfile');
 		var span = document.getElementsByClassName("close")[0];
 		modal.style.display = "block";
 		var name = document.getElementById('info_name');
@@ -146,5 +164,20 @@
 		var valueToSearch = document.getElementById("advancedSearch").value;
 		var someComics = Comic.findByAnyMatch(valueToSearch);
 		drawComics(someComics);
+	}
+
+	function showImageDetalis(){
+		var modal = document.getElementById('comic_details');
+		var span = document.getElementsByClassName("close")[0];
+		modal.style.display = "block";
+		span.onclick = function() {
+    		modal.style.display = "none";
+    	}
+
+    	window.onclick = function(event) {
+   		 	if (event.target == modal) {
+      	 		 modal.style.display = "none";
+   			 }
+   		}
 	}
 	

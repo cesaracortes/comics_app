@@ -7,8 +7,8 @@ header {
 
 
 html{
-	background: black;
-	padding: 0;
+  background: black;
+  padding: 0;
   border: 0;
   margin: 0;
   font: inherit;
@@ -36,7 +36,6 @@ li figure{
 }
 
 li figure img{
-	border: 1px solid black;
     width: 200px;
     height: 300px;
 }
@@ -102,7 +101,7 @@ input, select{
 
 }
 
-#myModal {
+.modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
@@ -139,20 +138,7 @@ input, select{
     width: 30%;
 }
 
-/* The Close Button */
-.close {
-    color: #aaaaaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
 
-.close:hover,
-.close:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
-}
 
 #usr_info {
 	position: relative;
@@ -160,11 +146,13 @@ input, select{
 	padding-top: 0px;
 }
 
+
+
 #usr_info #info_header{
     padding-left: 20px;
     padding-top: 10px;
     padding-bottom: 10px;
-	background-color: #1574B5;
+	background-color: #330000;
 
 }
 
@@ -195,3 +183,19 @@ input, select{
     background-repeat: no-repeat;
 }
 
+
+
+.details {
+    background: #330000;
+
+}
+
+
+.details label{
+    color: white;
+    display: block;
+    padding-bottom: 5px;
+    font-family: Century Gothic, sans-serif;
+    font-size: 15px;
+
+}

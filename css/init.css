@@ -13,7 +13,7 @@
 
 
 
-#log_in input[type=text], #log_in input[type=password], #log_in input[type=submit]{
+#log_in input[type=text], #log_in input[type=password], #log_in input[type=submit],{
     padding: 5px;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -32,14 +32,14 @@
   padding-right: 30px;
   position: relative;
   left: 500px;
-  top: 100px;
+  top: 70px;
   background: #004d99; 
   display: none;
   border-radius: 4px;
   width: 300px;
 }
 
-#sign_in  input{
+#sign_in  input , select {
   padding: 12px 20px;
   margin: 8px 0;
   border: 1px solid #ccc;
@@ -69,3 +69,11 @@ header{
     padding: 10px;
     box-sizing: border-box; /* que onda esto? ´porque lo necesito siempre?*/
 }
+
+
+.errors{
+  color: red;
+  font-weight: bold;
+  display: none;
+}
+
