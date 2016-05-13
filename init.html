@@ -22,14 +22,14 @@
 			<label>Please enter valid information</label>
 		</div>
 		<div class="user_data">
-			<input type="text" placeholder="Name" id="new_name" >  </input>
-			<input type="text" placeholder="Last Name " id="new_last_name" >  </input>
+			<input onfocusout="clearIfNecessary()" type="text" placeholder="Name" id="new_name" >  </input>
+			<input onfocusout="clearIfNecessary()" type="text" placeholder="Last Name " id="new_last_name" >  </input>
 		</div>
 		<div class="user_unique_data">
-			<input type="text" placeholder="E-mail " id="new_e_mail" >  </input>
-			<input type="text" name="user_name" placeholder="User name" id="new_user_name" >  </input>
-			<input type="password" name="password" placeholder="Password" id="new_pass"  </input>
-			<select >
+			<input onfocusout="clearIfNecessary()" type="text" placeholder="E-mail " id="new_e_mail" >  </input>
+			<input onfocusout="clearIfNecessary()" type="text" name="user_name" placeholder="User name" id="new_user_name" >  </input>
+			<input onfocusout="clearIfNecessary()" type="password" name="password" placeholder="Password" id="new_pass"  </input>
+			<select onfocusout="clearIfNecessary()" id="id_perfil">
 			 	<option value="" disabled selected>Perfil</option>
 				<option>Administrator</option>
 				<option>Normal User</option>

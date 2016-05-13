@@ -4,6 +4,7 @@
 <body  onload="init()">
 	<header>
 	</header>
+	<section class="toolbar">
 	<div id="search_panel">
 		<select id="genre_selection" onchange="findByGenre()">
 			 <option value="" disabled selected>Find by Gender</option>
@@ -12,7 +13,7 @@
 			 <option value="" disabled selected>Find by Character</option>
 		</select>
 		<input id="advancedSearch" type="text" name="search" placeholder="Advanced Search.." onkeyup="doAdvancedSearch()">
-		<input type="submit" value="clear" onclick="clearSearch()"></input>	
+		<a href="#" class="button" value="clear" onclick="clearSearch()">clear</a>	
 
 
 
@@ -21,8 +22,11 @@
   	</div>
   	<div id="userinfo">
   			<a href="#" id="loged_usr" onclick="showProfile()"></a>
-			<input type="submit" value="log out" onclick="log_out()"></input>	
+  			<a href="#" class="button" value="clear" onclick="log_out()">Log out</a>	
+				
   		</div>
+	</section>
+
 </div>
 	</div>
 		<section id="comics">

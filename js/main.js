@@ -2,6 +2,7 @@
 		var item = document.createElement("li");
 		var fig = document.createElement("figure");
 		fig.innerHTML = "<img onclick=\"showImageDetalis()\" src=\"" + aComic.location + "\">" ;
+		
 		var details = document.createElement("div");
 		details.className = "details";
 		
@@ -34,6 +35,18 @@
 
 	function init(){
 		validatelogedUsr();
+		var images = ["imgs/bat-sup.jpg","imgs/civilwarbanner.jpg" , "imgs/header02.jpg"];
+		var header = document.getElementsByTagName("header")[0];
+		var i = 0;
+		function changeBackgroundImage() {
+			header.style.backgroundImage = "url("+ images[i] +")";
+  		      i++;
+  		      if(i == images.length){
+  		      	i = 0;
+  		      }
+  		}
+	    setInterval(changeBackgroundImage, 5000);
+	
 		var comics = document.getElementById("comics");
 		var list = document.createElement("ul");
 		comics.appendChild(list);
@@ -48,7 +61,7 @@
 
 	function loadGenderSelection(){
 		 var gender_selection = document.getElementById("genre_selection");
-		 var genders = Genre.all()
+		 var genders = Genre.all();
 		 for (var i = 0; i < genders.length ; i++) {
 		 	var gender = document.createElement("option");
 		 	 gender.textContent = genders[i];
@@ -61,8 +74,8 @@
 		 var characters = Character.all();
 		 for (var i = 0; i < characters.length ; i++) {
 		 	var character = document.createElement("option");
-		 	 character.textContent = characters[i].name;
-		 	 characters_selection.appendChild(character);	
+		 	character.textContent = characters[i].name;
+		 	characters_selection.appendChild(character);	
 		 }
 	}
 
@@ -166,18 +179,4 @@
 		drawComics(someComics);
 	}
 
-	function showImageDetalis(){
-		var modal = document.getElementById('comic_details');
-		var span = document.getElementsByClassName("close")[0];
-		modal.style.display = "block";
-		span.onclick = function() {
-    		modal.style.display = "none";
-    	}
-
-    	window.onclick = function(event) {
-   		 	if (event.target == modal) {
-      	 		 modal.style.display = "none";
-   			 }
-   		}
-	}
 	
