@@ -59,17 +59,14 @@ function register(){
 		do_register();
 		window.location = "main.html";
 	}else{
-		var sign_in = document.getElementById("sign_in");
-		var errors = sign_in.getElementsByClassName("errors")[0];
-		errors.style.display = "block";
+		
 
 
 	}
 }
 
 function do_register(){
-	var user = {user_name:new_user_name.value, password: new_pass.value , 
-		name: new_name.value ,email: new_e_mail.value, last_name: new_last_name.value , perfil: id_perfil.value  }; 
+	var user = new User (new_user_name.value, new_pass.value , new_name.value ,new_e_mail.value,new_last_name.value , id_perfil.value); 
 	var registerd_users = usersFromJSON();
 	registerd_users.push(user);
 	localStorage["users"] = JSON.stringify(registerd_users);
@@ -77,7 +74,16 @@ function do_register(){
 }
 
 function validateUser(){
+	if(userExists()){
+		showErrorWith("User already taken");	
+	}
 	return !userExists() && isPassValid();
+}
+
+function showErrorWith(message){
+	var errors = document.getElementById("sign_in").getElementsByClassName("errors")[0];
+	errors.innerHTML = message;
+	errors.style.display = "block";
 }
 
 function validInputs(){
@@ -88,11 +94,15 @@ function validInputs(){
 	for (var i = 0; i < invalidInputs.length; i++) {
 		invalidInputs[i].style.border = "2px solid red";
 	}
+	if(!invalidInputs.length == 0){
+		showErrorWith("Please enter valid information");
+	}
 	return invalidInputs.length == 0; 
 }
 
 function userExists(){
-	return usersFromJSON().some(function(aValue){
+	var users = usersFromJSON();
+	return users.length > 0 && users.some(function(aValue){
 		return aValue.user_name == new_user_name.value;
 	});
 	}
@@ -100,7 +110,12 @@ function userExists(){
 function isPassValid(){
 	var pass = new_pass.value;
 	var pattern = new RegExp("[a-zA-Z0-9]");
-    return pass.length > 6 && pattern.test();
+	var isValid = pass.length > 6 && pattern.test();
+	if(!isValid){
+	   showErrorWith("Password Should be alphanumeric with at least 7 characters");		
+	}
+	
+    return isValid ;
 }
 
 function init(){
@@ -112,12 +127,17 @@ function init(){
 function cancel(){
 	document.getElementById("log_in").style.display = "inline-block";
 	document.getElementById("sign_in").style.display = "none";
-	var requiredInputs = getRequiredInputs();
+	clearErrors();
+	
+
+}
+
+function clearErrors(){
+var requiredInputs = getRequiredInputs();
 	for (var i = 0; i < requiredInputs.length; i++) {
 		requiredInputs[i].style.border = "1px solid #ccc";
 	}
 	document.getElementById("sign_in").getElementsByClassName("errors")[0].style.display = "none";
-
 }
 
 function getRequiredInputs(){

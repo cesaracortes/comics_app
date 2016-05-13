@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html>
 <link rel="stylesheet" type="text/css" href="css/main.css">
+<head >
+<script type="text/javascript">
+		if(localStorage["logedUser"] == undefined){
+			window.location = "init.html";
+		}
+		</script>
+</head>
+</head>
 <body  onload="init()">
 	<header>
 	</header>
@@ -64,6 +72,7 @@
 
 
 </body>
+
 
 <script src="js/filter.js"></script>
 <script src="js/character.js"></script>

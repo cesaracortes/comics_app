@@ -2,7 +2,17 @@
 		var item = document.createElement("li");
 		var fig = document.createElement("figure");
 		fig.innerHTML = "<img onclick=\"showImageDetalis()\" src=\"" + aComic.location + "\">" ;
-		
+		addDesciptionToItem(item,aComic);
+		item.appendChild(fig);
+		return item;
+		}
+
+	function addDir(aFileName){
+		var dir = "imgs/";
+		return dir + aFileName;
+	}
+
+	function addDesciptionToItem(item,aComic){
 		var details = document.createElement("div");
 		details.className = "details";
 		
@@ -18,23 +28,23 @@
 		var publishedLabel = document.createElement("label");
 		publishedLabel.innerHTML = "Published: " + aComic.publishedAt;
 		details.appendChild(publishedLabel);
-
-
-		item.appendChild(fig);
 		item.appendChild(details);
-
-		return item;
-		}
-
-	function addDir(aFileName){
-		var dir = "imgs/";
-		return dir + aFileName;
 	}
 
 
 
 	function init(){
-		validatelogedUsr();
+		loged_usr.text = "Welcome " + logedUser().name;
+		loadBanner();
+		var comics = document.getElementById("comics");
+		var list = document.createElement("ul");
+		comics.appendChild(list);
+		drawComics(findComics());
+		loadGenderSelection();
+		loadCharacterSelection();
+	}
+
+	function loadBanner(){
 		var images = ["imgs/bat-sup.jpg","imgs/civilwarbanner.jpg" , "imgs/header02.jpg"];
 		var header = document.getElementsByTagName("header")[0];
 		var i = 0;
@@ -46,16 +56,6 @@
   		      }
   		}
 	    setInterval(changeBackgroundImage, 5000);
-	
-		var comics = document.getElementById("comics");
-		var list = document.createElement("ul");
-		comics.appendChild(list);
-		var items = findComics().map(addItem);
-		items.forEach(function (anItem){
-			list.appendChild(anItem);
-		});
-		loadGenderSelection();
-		loadCharacterSelection();
 	}
 	
 
@@ -136,11 +136,7 @@
 	}
 
 	function validatelogedUsr(){
-		if(localStorage["logedUser"] == undefined){
-			window.location = "init.html";
-		}else{
-			loged_usr.text = "Welcome " + logedUser().name ;
-		}
+
 	}
 
 	function logedUser(){
@@ -149,21 +145,12 @@
 
 	function showProfile(){
 		var modal = document.getElementById('userProfile');
-		var span = document.getElementsByClassName("close")[0];
 		modal.style.display = "block";
-		var name = document.getElementById('info_name');
-		var user_name = document.getElementById('info_user_name');
-		var mail = document.getElementById('info_email');
-		var perfil = document.getElementById('info_perfil');
 		var user = logedUser();
-		name.innerHTML = user.name + " "  + user.last_name ;
-		user_name.innerHTML = user.user_name;
-		mail.innerHTML = user.email;
-		perfil.innerHTML =user.perfil;
-
-		span.onclick = function() {
-    		modal.style.display = "none";
-    	}
+		info_name.innerHTML = user.name + " "  + user.lastName ;
+		info_user_name.innerHTML = user.user_name;
+		info_email.innerHTML = user.email;
+		info_perfil.innerHTML =user.perfil;
 
     	window.onclick = function(event) {
    		 	if (event.target == modal) {
