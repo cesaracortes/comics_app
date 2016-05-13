@@ -2,8 +2,10 @@
 		var item = document.createElement("li");
 		var fig = document.createElement("figure");
 		fig.innerHTML = "<img onclick=\"showImageDetalis()\" src=\"" + aComic.location + "\">" ;
-		addDesciptionToItem(item,aComic);
 		item.appendChild(fig);
+		addDesciptionToItem(item,aComic);
+		
+
 		return item;
 		}
 
